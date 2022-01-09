@@ -81,8 +81,10 @@ pipeline {
                       }
                     }
                 }
-                oc new-app --as-deployment-config ${APP_NAME}:latest -n ${DEV_PROJECT}
-                oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
+                sh '''
+                	oc new-app --as-deployment-config ${APP_NAME}:latest -n ${DEV_PROJECT}
+                	oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
+		   '''
             }
         }
 
